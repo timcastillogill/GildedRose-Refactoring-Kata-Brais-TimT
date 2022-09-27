@@ -11,7 +11,23 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+        assertEquals("foo", app.items[0].name);
+    }
+
+    @Test
+    void increases_quality_aged_brie(){
+        Item[] items = new Item[]{ new Item("Aged Brie", 2, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2,app.items[0].quality);
+    }
+
+    @Test
+    void decreases_sellin_aged_brie(){
+        Item[] items = new Item[]{ new Item("Aged Brie", 2, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(1,app.items[0].sellIn);
     }
 
 }
