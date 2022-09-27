@@ -64,6 +64,14 @@ class GildedRoseTest {
     }
 
     @Test
+    void backstage_passes_quality_drop_to_0_when_sellin_less_than_0(){
+        Item[] items = new Item[]{ new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0,app.items[0].quality);
+    }
+
+    @Test
     void item_is_an_apple_quality_decreases_by_one(){
         Item[] items = new Item[]{ new Item("apple", 15, 10) };
         GildedRose app = new GildedRose(items);
@@ -71,6 +79,37 @@ class GildedRoseTest {
         assertEquals(9,app.items[0].quality);
     }
 
+    @Test
+    void backstage_passes_5_days_or_less_to_concert_increases_by_3(){
+        Item[] items = new Item[]{ new Item("Backstage passes to a TAFKAL80ETC concert", 5, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5,app.items[0].quality);
+    }
+
+    @Test
+    void apple_quality_decrements_by_2_when_sellin_less_than_0(){
+        Item[] items = new Item[]{ new Item("apple", -1, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0,app.items[0].quality);
+    }
+
+    @Test
+    void aged_brie_increases_quality_when_sellin_less_than_0(){
+        Item[] items = new Item[]{ new Item("Aged Brie", 0, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(3,app.items[0].quality);
+    }
+
+    @Test
+    void decreases_sellin_aged_(){
+        Item[] items = new Item[]{ new Item("Aged Brie", 0, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(3,app.items[0].quality);
+    }
 
 
 }
