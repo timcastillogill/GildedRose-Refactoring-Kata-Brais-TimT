@@ -55,4 +55,20 @@ class GildedRoseTest {
         assertEquals(11,app.items[0].quality);
     }
 
+    @Test
+    void item_is_an_apple_quality_decreases_by_one(){
+        Item[] items = new Item[]{ new Item("apple", 15, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(9,app.items[0].quality);
+    }
+
+//    @Test
+//    void __(){
+//        Item[] items = new Item[]{ new Item("Backstage passes to a TAFKAL80ETC concert", 15, 10) };
+//        GildedRose app = new GildedRose(items);
+//        app.updateQuality();
+//        assertEquals(11,app.items[0].quality);
+//    }
+
 }
