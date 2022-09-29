@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.refactor;
 
-public class GildedRoseRefactored implements SystemUnderTestInterface{
+import com.gildedrose.Item;
+
+public class GildedRoseRefactored{
     Item[] items;
 
     public GildedRoseRefactored(Item[] items) {
@@ -13,23 +15,23 @@ public class GildedRoseRefactored implements SystemUnderTestInterface{
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
                     if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
+                        decreaseQuality(i);
                     }
                 }
             } else {
                 if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+                    upgradeQuality(i);
 
                     if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (items[i].sellIn < 11) {
                             if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                                upgradeQuality(i);
                             }
                         }
 
                         if (items[i].sellIn < 6) {
                             if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                                upgradeQuality(i);
                             }
                         }
                     }
@@ -37,7 +39,7 @@ public class GildedRoseRefactored implements SystemUnderTestInterface{
             }
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
+                items[i].sellIn -= 1;
             }
 
             if (items[i].sellIn < 0) {
@@ -45,7 +47,7 @@ public class GildedRoseRefactored implements SystemUnderTestInterface{
                     if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (items[i].quality > 0) {
                             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
+                                decreaseQuality(i);
                             }
                         }
                     } else {
@@ -53,10 +55,18 @@ public class GildedRoseRefactored implements SystemUnderTestInterface{
                     }
                 } else {
                     if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
+                        upgradeQuality(i);
                     }
                 }
             }
         }
+    }
+
+    private void upgradeQuality(int i) {
+        items[i].quality += 1;
+    }
+
+    private void decreaseQuality(int i) {
+        items[i].quality -= 1;
     }
 }

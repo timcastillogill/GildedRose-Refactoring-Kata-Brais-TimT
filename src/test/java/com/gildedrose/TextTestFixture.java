@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import com.gildedrose.refactor.GildedRose;
-
 public class TextTestFixture {
 
     public static void main(String[] args) {

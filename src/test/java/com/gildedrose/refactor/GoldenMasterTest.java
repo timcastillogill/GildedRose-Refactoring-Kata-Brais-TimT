@@ -1,6 +1,5 @@
 package com.gildedrose.refactor;
 
-import com.gildedrose.GildedRoseRefactored;
 import com.gildedrose.Item;
 import com.gildedrose.TextTestFixture;
 import org.junit.jupiter.api.Test;
