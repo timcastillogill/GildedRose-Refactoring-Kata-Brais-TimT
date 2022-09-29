@@ -1,13 +1,14 @@
 package com.gildedrose.refactor;
 
+import com.gildedrose.GildedRoseRefactored;
 import com.gildedrose.Item;
 import com.gildedrose.TextTestFixture;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class GoldenMasterTest {
 
@@ -19,13 +20,12 @@ public class GoldenMasterTest {
 
 		ByteArrayOutputStream refactorOutputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(refactorOutputStream));
-		mockMain(new String[]{"10"});
+		mainMock(new String[]{});
 
-		assertEquals(originalOutputStream.toString(), refactorOutputStream().toString());
-//		GildedRoseRefactoredTest.main(new String[]{}); // <-- Passing the method empty string // Checking for the stored output of both consoles Assertions.assertEquals(originalOutputStream.toString(), refactorOutputStream.toString()); }
+		assertEquals(originalOutputStream.toString(), refactorOutputStream.toString());
 	}
 
-	void mockMain(String[] args) {
+	public void mainMock(java.lang.String[] args) {
 		System.out.println("OMGHAI!");
 
 		Item[] items = new Item[]{
@@ -40,11 +40,11 @@ public class GoldenMasterTest {
 				// this conjured item does not work properly yet
 				new Item("Conjured Mana Cake", 3, 6)};
 
-		GildedRose app = new GildedRose(items);
+		GildedRoseRefactored app = new GildedRoseRefactored(items);
 
 		int days = 15;
 		if (args.length > 0) {
-			days = Integer.parseInt(String.valueOf(args[0])) + 1;
+			days = Integer.parseInt(args[0]) + 1;
 		}
 
 		for (int i = 0; i < days; i++) {

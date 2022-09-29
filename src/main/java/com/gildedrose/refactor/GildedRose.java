@@ -1,8 +1,9 @@
 package com.gildedrose.refactor;
 
 import com.gildedrose.Item;
+import com.gildedrose.SystemUnderTestInterface;
 
-public class GildedRose {
+public class GildedRose implements SystemUnderTestInterface {
     Item[] items;
 
     public GildedRose(Item[] items) {

@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class GildedRoseRefactored {
+public class GildedRoseRefactored implements SystemUnderTestInterface{
     Item[] items;
 
     public GildedRoseRefactored(Item[] items) {
