@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.refactor;
 
-class GildedRose {
+import com.gildedrose.Item;
+
+public class GildedRose {
     Item[] items;
 
     public GildedRose(Item[] items) {
